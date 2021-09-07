@@ -8,24 +8,32 @@ const Reversi = () => {
   const [squares, setSquare] = useState([]);
 
   useEffect(() => {
+    let number = 1;
     const squareList = range(8).map((i) => {
       const row = [];
 
-      range(8).forEach((j) => {
-        row.push(0);
+      range(8).forEach((_) => {
+        // initialize
+        if ([28, 37].includes(number)) {
+          row.push({ status: 1, number });
+        } else if ([29, 36].includes(number)) {
+          row.push({ status: 2, number });
+        } else {
+          row.push({ status: 0, number });
+        }
+
+        number++;
       });
 
       return row;
     });
 
-    // initialize
-    squareList[3][3] = 1;
-    squareList[3][4] = 2;
-    squareList[4][3] = 2;
-    squareList[4][4] = 1;
-
     setSquare(squareList);
   }, []);
+
+  const handleClick = (e) => {
+    console.log(e.currentTarget.dataset.location);
+  };
 
   return (
     <div>
@@ -34,7 +42,12 @@ const Reversi = () => {
           {squares.map((rows, i) => (
             <tr key={'tr-' + i}>
               {rows.map((row, j) => (
-                <td className={blockMap[row]} key={`td-${i}-${j}`}></td>
+                <td
+                  className={blockMap[row.status]}
+                  key={row.number}
+                  data-location={row.number}
+                  onClick={handleClick}
+                ></td>
               ))}
             </tr>
           ))}
