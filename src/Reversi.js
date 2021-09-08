@@ -31,19 +31,193 @@ const Reversi = () => {
         if (targetSquare) return targetSquare;
       }
 
-      throw new Error('Not found target square');
+      return null;
     },
     [squares]
   );
 
   const updateSquares = useCallback(
     (location, status) => {
+      const reverse = (location, status) => {
+        // const oppositeStatus = status === 1 ? 2 : 1;
+
+        // left
+        for (
+          let i = location - 1, end = location - (location % 8), buf = [];
+          i >= end;
+          i--
+        ) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // right
+        for (
+          let i = location + 1, end = location + (7 - (location % 8)), buf = [];
+          i <= end;
+          i++
+        ) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // top
+        for (let i = location - 8, buf = []; i >= 1; i -= 8) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // bottom
+        for (let i = location + 8, buf = []; i <= 64; i += 8) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // top left
+        for (let i = location - 9, buf = []; i >= 1; i -= 9) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // bottom left
+        for (let i = location + 7, buf = []; i <= 64; i += 7) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // top right
+        for (let i = location - 7, buf = []; i >= 1; i -= 7) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+
+        // bottom right
+        for (let i = location + 9, buf = []; i <= 64; i += 9) {
+          if (!getSquare(i)) {
+            break;
+          }
+
+          if (getSquare(i).status === 0) {
+            break;
+          }
+
+          if (getSquare(i).status === status) {
+            buf.forEach((b) => {
+              b.status = status;
+            });
+            break;
+          }
+
+          buf.push(getSquare(i));
+        }
+      };
+
       const targetSquare = getSquare(location);
       targetSquare.status = status;
 
+      reverse(+location, status);
+
       setSquares(JSON.parse(JSON.stringify(squares)));
     },
-    [squares]
+    [squares, getSquare]
   );
 
   const handleClick = useCallback(
