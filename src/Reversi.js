@@ -4,6 +4,9 @@ import './Reversi.css';
 const range = (n) => [...Array(n).keys()];
 const blockMap = { 0: '', 1: 'black', 2: 'white' };
 
+// Display square location number
+const DEBUG_MODE = false;
+
 const Reversi = () => {
   const [squares, setSquares] = useState([]);
   const [turnCount, setTunrCount] = useState(1);
@@ -267,7 +270,7 @@ const Reversi = () => {
                   key={row.location}
                   data-location={row.location}
                   onClick={handleClick}
-                ></td>
+                >{DEBUG_MODE && row.location}</td>
               ))}
             </tr>
           ))}
