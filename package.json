@@ -16,6 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "e2e": "testcafe chrome e2e/test.ts",
     "fmt": "prettier --write '**/*.{js,json,md,html}'"
   },
   "prettier": {
@@ -40,6 +41,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.3.2"
+    "@babel/plugin-proposal-private-methods": "^7.14.5",
+    "prettier": "^2.3.2",
+    "testcafe": "^1.16.0"
   }
 }
