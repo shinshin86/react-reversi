@@ -93,7 +93,7 @@ const Reversi = () => {
         }
 
         // top
-        for (let i = location - 8, buf = []; i >= 1; i -= 8) {
+        for (let i = location - 8, buf = []; i >= 0; i -= 8) {
           if (!getSquare(i)) {
             break;
           }
@@ -113,7 +113,7 @@ const Reversi = () => {
         }
 
         // bottom
-        for (let i = location + 8, buf = []; i <= 64; i += 8) {
+        for (let i = location + 8, buf = []; i <= 63; i += 8) {
           if (!getSquare(i)) {
             break;
           }
@@ -133,7 +133,7 @@ const Reversi = () => {
         }
 
         // top left
-        for (let i = location - 9, buf = []; i >= 1; i -= 9) {
+        for (let i = location - 9, buf = []; i >= 0; i -= 9) {
           if (!getSquare(i)) {
             break;
           }
@@ -153,7 +153,7 @@ const Reversi = () => {
         }
 
         // bottom left
-        for (let i = location + 7, buf = []; i <= 64; i += 7) {
+        for (let i = location + 7, buf = []; i <= 63; i += 7) {
           if (!getSquare(i)) {
             break;
           }
@@ -173,7 +173,7 @@ const Reversi = () => {
         }
 
         // top right
-        for (let i = location - 7, buf = []; i >= 1; i -= 7) {
+        for (let i = location - 7, buf = []; i >= 0; i -= 7) {
           if (!getSquare(i)) {
             break;
           }
@@ -193,7 +193,7 @@ const Reversi = () => {
         }
 
         // bottom right
-        for (let i = location + 9, buf = []; i <= 64; i += 9) {
+        for (let i = location + 9, buf = []; i <= 63; i += 9) {
           if (!getSquare(i)) {
             break;
           }
@@ -235,15 +235,15 @@ const Reversi = () => {
   );
 
   useEffect(() => {
-    let location = 1;
+    let location = 0;
     const squareList = range(8).map((i) => {
       const row = [];
 
       range(8).forEach((_) => {
         // initialize
-        if ([28, 37].includes(location)) {
+        if ([27, 36].includes(location)) {
           row.push({ status: 1, location });
-        } else if ([29, 36].includes(location)) {
+        } else if ([28, 35].includes(location)) {
           row.push({ status: 2, location });
         } else {
           row.push({ status: 0, location });
@@ -270,7 +270,9 @@ const Reversi = () => {
                   key={row.location}
                   data-location={row.location}
                   onClick={handleClick}
-                >{DEBUG_MODE && row.location}</td>
+                >
+                  {DEBUG_MODE && row.location}
+                </td>
               ))}
             </tr>
           ))}
