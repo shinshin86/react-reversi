@@ -19,4 +19,9 @@ test('Display squares', async (t: TestController) => {
   const tdElement = Selector('td');
   await t.expect(tdElement.nth(0).getAttribute('data-location')).eql('0');
   await t.expect(tdElement.nth(63).getAttribute('data-location')).eql('63');
+
+  await t.expect(tdElement.nth(27).getAttribute('class')).eql('black');
+  await t.expect(tdElement.nth(36).getAttribute('class')).eql('black');
+  await t.expect(tdElement.nth(28).getAttribute('class')).eql('white');
+  await t.expect(tdElement.nth(35).getAttribute('class')).eql('white');
 });
