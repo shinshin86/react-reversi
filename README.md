@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![React Reversi](https://user-images.githubusercontent.com/8216064/132965778-2a6b7584-bf78-4354-816f-675e99fb6eb7.png){:height="50%" width="50%"}
+<p>
+  <img src="https://user-images.githubusercontent.com/8216064/132965778-2a6b7584-bf78-4354-816f-675e99fb6eb7.png" alt="React Reversi" width="400px" height="375px">
+</p>
 
 ## Available Scripts
 
