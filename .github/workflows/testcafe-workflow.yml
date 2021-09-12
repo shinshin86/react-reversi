@@ -1,0 +1,23 @@
+name: Target Multiple Node.js Versions and Operating Systems
+on: [push]
+
+jobs:
+  build:
+    name: Run Tests Across Node.js Versions and Operating Systems
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [12, 14]
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Run TestCafe Tests - "${{ matrix.os }} ${{ matrix.node-version }}"
+        uses: DevExpress/testcafe-action@latest
+        with:
+          args: "chrome tests"
+      - run: yarn
+      - run: yarn start
+      - run: yarn e2e
