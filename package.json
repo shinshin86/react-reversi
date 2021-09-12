@@ -17,6 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "e2e": "testcafe chrome e2e/test.ts",
+    "e2e:github-actions": "testcafe chrome:headless e2e/test.ts",
     "fmt": "prettier --write '**/*.{js,ts,json,md,html}'"
   },
   "prettier": {
