@@ -14,10 +14,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
-      - name: Run TestCafe Tests - "${{ matrix.os }} ${{ matrix.node-version }}"
+      - name: Run TestCafe Tests - os\:${{ matrix.os }},  node-version\:${{ matrix.node-version }}"
         uses: DevExpress/testcafe-action@latest
         with:
-          args: "chrome tests"
+          args: "chrome:headless tests"
       - run: yarn
       - run: yarn start
       - run: yarn e2e
