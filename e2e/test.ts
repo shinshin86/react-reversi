@@ -25,3 +25,19 @@ test('Display squares', async (t: TestController) => {
   await t.expect(tdElement.nth(28).getAttribute('class')).eql('white');
   await t.expect(tdElement.nth(35).getAttribute('class')).eql('white');
 });
+
+test('Reverse', async (t: TestController) => {
+  const tdElement = Selector('td');
+
+  await t.expect(tdElement.nth(27).getAttribute('class')).eql('black');
+  await t.expect(tdElement.nth(36).getAttribute('class')).eql('black');
+  await t.expect(tdElement.nth(28).getAttribute('class')).eql('white');
+  await t.expect(tdElement.nth(35).getAttribute('class')).eql('white');
+
+  await t
+    .click(tdElement.nth(29))
+    .expect(tdElement.nth(29).getAttribute('class'))
+    .eql('black')
+    .expect(tdElement.nth(28).getAttribute('class'))
+    .eql('black');
+});
