@@ -17,7 +17,7 @@ jobs:
       - name: Server start
         run: |
           yarn
-          yarn start
+          yarn start &
       - name: Run TestCafe Tests - os:${{ matrix.os }}, node-version:${{ matrix.node-version }}"
         uses: DevExpress/testcafe-action@latest
         with:
