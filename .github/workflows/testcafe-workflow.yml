@@ -17,7 +17,4 @@ jobs:
       - name: Run TestCafe Tests - os:${{ matrix.os }}, node-version:${{ matrix.node-version }}"
         uses: DevExpress/testcafe-action@latest
         with:
-          args: "testcafe chrome e2e/test.ts"
-      # - run: yarn
-      # - run: yarn start
-      # - run: yarn e2e:github-actions
+          args: "chrome:headless e2e/test.ts"
