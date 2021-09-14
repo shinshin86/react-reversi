@@ -14,8 +14,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
-          run: yarn
-          run: yarn start
+      - name: Server start
+        run: |
+          yarn
+          yarn start
       - name: Run TestCafe Tests - os:${{ matrix.os }}, node-version:${{ matrix.node-version }}"
         uses: DevExpress/testcafe-action@latest
         with:
