@@ -16,7 +16,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fmt": "prettier --write '**/*.{js,json,md,html}'"
+    "e2e": "testcafe chrome e2e/test.ts",
+    "e2e:github-actions": "testcafe chrome:headless e2e/test.ts",
+    "fmt": "prettier --write '**/*.{js,ts,json,md,html}'"
   },
   "prettier": {
     "singleQuote": true
@@ -40,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.3.2"
+    "@babel/plugin-proposal-private-methods": "^7.14.5",
+    "prettier": "^2.3.2",
+    "testcafe": "^1.16.0"
   }
 }

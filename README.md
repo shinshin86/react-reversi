@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# React Reversi
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/8216064/132965778-2a6b7584-bf78-4354-816f-675e99fb6eb7.png" alt="React Reversi" width="400px">
+</p>
 
 ## Available Scripts
 
@@ -13,6 +17,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn e2e`
+
+Run the E2E test.
+You need to start the application with `yarn start` before running it.
 
 ### `yarn test`
 
