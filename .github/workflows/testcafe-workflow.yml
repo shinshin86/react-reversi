@@ -21,9 +21,10 @@ jobs:
           yarn start &
       - name: Server start(windows-latest)
         if: ${{ matrix.os == 'windows-latest' }}
+        working-directory: ./e2e
         run: |
           yarn
-          start /b e2e-test-setup.bat
+          start /b .¥e2e-test-setup.bat
       - name: Run TestCafe Tests - os:${{ matrix.os }}, node-version:${{ matrix.node-version }}"
         uses: DevExpress/testcafe-action@latest
         with:
