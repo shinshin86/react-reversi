@@ -1,5 +1,7 @@
 # React Reversi
 
+[![Target Multiple Node.js Versions and Operating Systems](https://github.com/shinshin86/react-reversi/actions/workflows/testcafe-workflow.yml/badge.svg)](https://github.com/shinshin86/react-reversi/actions/workflows/testcafe-workflow.yml)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 <p align="center">
