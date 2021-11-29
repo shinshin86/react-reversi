@@ -1,17 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
 import './Reversi.css';
+import { BlockStatusString, Status, Square, BlockMap } from './types'
 
-const range = (n) => [...Array(n).keys()];
-const blockMap = { 0: '', 1: 'black', 2: 'white' };
+const range = (n: number): Array<any> => [...Array(n).keys()];
+const blockMap: BlockMap = { 0: '', 1: 'black', 2: 'white' };
 
 // Display square location number
 const DEBUG_MODE = false;
 
 const Reversi = () => {
-  const [squares, setSquares] = useState([]);
+  const [squares, setSquares] = useState<Array<Array<Square>>>([]);
   const [turnCount, setTunrCount] = useState(1);
 
-  const getBlockStatus = (statusStr) => {
+  const getBlockStatus = (statusStr: BlockStatusString): number => {
     switch (statusStr) {
       case 'black':
         return 1;
@@ -23,30 +24,30 @@ const Reversi = () => {
   };
 
   const getSquare = useCallback(
-    (location) => {
-      let targetSquare;
+    (location: number): Square => {
+      let targetSquare: Square | undefined;
 
       for (const rows of squares) {
-        targetSquare = rows.find((row) => {
+        targetSquare = rows.find((row: Square) => {
           return row.location === Number(location);
         });
 
         if (targetSquare) return targetSquare;
       }
 
-      return null;
+      return {location: 0, status: 0};
     },
     [squares]
   );
 
   const updateSquares = useCallback(
     (location, status) => {
-      const reverse = (location, status) => {
+      const reverse = (location: number, status: Status) => {
         // const oppositeStatus = status === 1 ? 2 : 1;
 
         // left
         for (
-          let i = location - 1, end = location - (location % 8), buf = [];
+          let i: number = location - 1, end: number = location - (location % 8), buf: Array<Square> = [];
           i >= end;
           i--
         ) {
@@ -236,8 +237,8 @@ const Reversi = () => {
 
   useEffect(() => {
     let location = 0;
-    const squareList = range(8).map((i) => {
-      const row = [];
+    const squareList: Array<Array<Square>> = range(8).map((i) => {
+      const row: Array<Square> = [];
 
       range(8).forEach((_) => {
         // initialize
